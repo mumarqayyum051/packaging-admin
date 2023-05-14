@@ -1,6 +1,7 @@
 // routes
 import { Navigate, Route, Routes } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import Layout from './Layout';
 // theme
 import ThemeProvider from './theme';
@@ -43,6 +44,7 @@ export default function App() {
           </Route>
         </Route>
       </Routes>
+      <ToastContainer />
     </ThemeProvider>
   );
 }

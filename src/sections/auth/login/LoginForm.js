@@ -1,14 +1,15 @@
-import * as Yup from 'yup';
+import { Form, FormikProvider, useFormik } from 'formik';
 import { useState } from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { useFormik, Form, FormikProvider } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
 // material
-import { Link, Stack, Checkbox, TextField, IconButton, InputAdornment, FormControlLabel } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
+import { IconButton, InputAdornment, Stack, TextField } from '@mui/material';
 import useAuth from '../../../hooks/useAuth';
 // component
 import Iconify from '../../../components/Iconify';
-
+import axios from '../../../axios';
+import { toast } from 'react-toastify';
 // ----------------------------------------------------------------------
 
 export default function LoginForm() {
@@ -28,8 +29,22 @@ export default function LoginForm() {
       type: 1,
     },
     validationSchema: LoginSchema,
-    onSubmit: (values, actions) => {
-     
+    onSubmit: async (values, actions) => {
+      try {
+        const response = await axios.post('/user/login', values);
+        console.log(response);
+        if (response.status === 200) {
+          setUser(response.data.data);
+          setIsAuthenticated(true);
+          navigate('/dashboard', { replace: true });
+        }
+      } catch (err) {
+        console.log(err);
+        toast.error(err.response.data.message, {
+          duration: 2000,
+          closeButton: true,
+        });
+      }
     },
   });
 

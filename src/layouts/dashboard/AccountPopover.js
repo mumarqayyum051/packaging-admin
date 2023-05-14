@@ -1,12 +1,11 @@
 import { useRef, useState } from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // @mui
+import { Avatar, Box, Divider, IconButton, MenuItem, Typography } from '@mui/material';
 import { alpha } from '@mui/material/styles';
-import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton } from '@mui/material';
 // components
 import MenuPopover from '../../components/MenuPopover';
 // mocks_
-import account from '../../_mock/account';
 import useAuth from '../../hooks/useAuth';
 // ----------------------------------------------------------------------
 
@@ -65,7 +64,7 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <Avatar src={account.photoURL} alt="photoURL" />
+        <Avatar src={''} alt="photoURL" />
       </IconButton>
 
       <MenuPopover

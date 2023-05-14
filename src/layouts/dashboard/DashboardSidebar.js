@@ -6,7 +6,6 @@ import { Avatar, Box, Drawer, Link, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import useAuth from '../../hooks/useAuth';
 // mock
-import account from '../../_mock/account';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
 // components
@@ -68,13 +67,13 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none" component={RouterLink} to="#">
           <AccountStyle>
-            <Avatar src={account.photoURL} alt="photoURL" />
+            <Avatar src={''} alt="photoURL" />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
                 {user?.email?.split('@')[0]}
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {account.role}
+                {'Admin'}
               </Typography>
             </Box>
           </AccountStyle>
